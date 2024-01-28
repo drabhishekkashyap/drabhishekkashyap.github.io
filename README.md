@@ -1,16 +1,58 @@
-### Hi there 👋
 
-<!--
-**drabhishekkashyap/drabhishekkashyap** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# Medical Research Project
 
-Here are some ideas to get you started:
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Overview
+
+Welcome to the Medical Research Project repository! This project aims to contribute to the field of [insert specific medical topic] by [briefly describe the goals and objectives of the project].
+## Table of Contents
+
+Introduction
+Features
+Installation
+Usage
+Contributing
+License
+# Hi, I'm Abhishek Kashyap! 👋
+
+
+## Features
+
+- Light/dark mode toggle
+- Live previews
+- Fullscreen mode
+- Cross platform
+
+
+## Installation
+
+Install my-project with npm
+
+```bash
+  npm install my-project
+  cd my-project
+```
+    
+## Usage/Examples
+
+```javascript
+import Component from 'my-project'
+
+function App() {
+  return <Component />
+}
+```
+
+
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
