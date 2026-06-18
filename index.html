@@ -1,168 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Abhishek Kashyap | Physician & Tech Innovator</title>
+    <title>Dr. Abhishek Kashyap | Physician & AI Tech Innovator</title>
+    <meta name="description" content="Portfolio of Dr. Abhishek Kashyap (MBBS) - General Physician, AI Integration Specialist, WordPress Developer, and Medical Content Writer.">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/de08c02929.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#header" class="logo-text">Abhishek<span>.</span></a>
-            <ul id="sidemenu">
-                <li><a href="#header"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#services"><i class="fas fa-stethoscope"></i> Services</a></li>
-                <li><a href="#portfolio"><i class="fas fa-code"></i> Portfolio</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                <i class="fas fa-times menu-btn" onclick="closemenu()"></i>
-            </ul>
-            <i class="fas fa-bars menu-btn" onclick="openmenu()"></i>
-        </div>
-    </nav>
-
-    <div id="header">
-        <div class="container hero-wrapper">
-            <div class="header-text">
-                <span class="badge">Welcome to my Portfolio</span>
-                <h1>Hi, I'm <span class="highlight">Abhishek</span></h1>
-                <h2 class="typing-element">I am a <span id="dynamic-roles"></span><span class="cursor">|</span></h2>
-                <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Based out of Gwalior, India</p>
-                <div class="hero-action-btns">
-                    <a href="#contact" class="btn primary-btn">Get In Touch</a>
-                    <button onclick="openCVModal()" class="btn secondary-btn"><i class="fas fa-lock"></i> Download CV</button>
-                </div>
-            </div>
-            <div class="header-image-container">
-                <div class="image-accent-glow"></div>
-                <img src="images/hero-portrait.jpg" alt="Dr. Abhishek Kashyap Headshot" class="hero-img-frame">
-            </div>
-        </div>
+    <div class="theme-toggle" id="theme-btn" aria-label="Toggle visual theme">
+        <i class="fas fa-moon"></i>
     </div>
 
-    <div id="about">
+    <header id="navbar">
+        <nav class="container">
+            <div class="logo">Abhishek<span>.</span></div>
+            <ul id="sidemenu">
+                <li><a href="#header" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <i class="fas fa-times menu-icon-close" id="menu-close"></i>
+            </ul>
+            <i class="fas fa-bars menu-icon-open" id="menu-open"></i>
+        </nav>
+    </header>
+
+    <section id="header">
+        <div class="container hero-wrapper">
+            <div class="header-text">
+                <p class="hero-subtitle">Clinical Excellence &amp; Intelligent Automation</p>
+                <h1>Hi, I'm <span>Abhishek</span><br>Kashyap</h1>
+                <div class="typing-container">
+                    <span class="static-txt">Expertise in </span>
+                    <span class="dynamic-txt" id="typing-text"></span>
+                </div>
+                <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Based in Gwalior</p>
+                <div class="hero-cta-group">
+                    <a href="#contact" class="btn">Let's Connect</a>
+                    <button class="btn btn-alt" id="cv-trigger">Download CV</button>
+                </div>
+            </div>
+            <div class="header-img-box">
+                <div class="hero-frame">
+                    <img src="images/hero-portrait.jpg" alt="Dr. Abhishek Kashyap - Professional Portrait">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
         <div class="container">
             <div class="row">
                 <div class="about-col-1">
                     <div class="about-img-wrapper">
-                        <img src="images/user.png" alt="Abhishek Profile Photo">
+                        <img src="images/user.png" alt="Abhishek Kashyap Technical Bio Photo">
                     </div>
                 </div>
                 <div class="about-col-2">
                     <h2 class="sub-title">About Me</h2>
-                    <p class="about-narrative">
-                        I am a clinical professional and technical innovator with a Bachelor of Medicine and Bachelor of Surgery (MBBS) from Mari State University (MarSU), Russia. Parallel to my medical practice, I have established a strong engineering foundation specializing in WordPress architecture, modern vibe-coding methodologies, and AI integration workflows. Driven by deep professional curiosity, I operate at the intersection of healthcare, intelligent automation, and technical communication. I leverage artificial intelligence to design high-performance digital ecosystems, build responsive web interfaces, and generate authoritative, scientifically accurate medical content.
+                    <p class="about-bio-text">
+                        I am a clinical professional and technical innovator with a Bachelor of Medicine and Bachelor of Surgery (MBBS) from Mari State University, Russia. Parallel to my medical practice, I have established a strong engineering foundation specializing in WordPress architecture, modern vibe-coding methodologies, and AI integration workflows. Driven by deep professional curiosity, I operate at the intersection of healthcare, intelligent automation, and technical communication. I leverage artificial intelligence to design high-performance digital ecosystems, build responsive web interfaces, and generate authoritative, medically validated content.
                     </p>
 
                     <div class="tab-titles">
-                        <p class="tab-links active-link" onclick="opentab('clinical', event)"><i class="fas fa-heartbeat"></i> Medical Skills</p>
-                        <p class="tab-links" onclick="opentab('engineering', event)"><i class="fas fa-laptop-code"></i> Tech Stack</p>
-                        <p class="tab-links" onclick="opentab('experience', event)"><i class="fas fa-briefcase"></i> Practice</p>
-                        <p class="tab-links" onclick="opentab('education', event)"><i class="fas fa-graduation-cap"></i> Milestones</p>
+                        <p class="tab-links active-link" data-tab="skills">Skills Matrix</p>
+                        <p class="tab-links" data-tab="experience">Experience</p>
+                        <p class="tab-links" data-tab="education">Education &amp; Milestones</p>
                     </div>
 
-                    <div class="tab-contents active-tab" id="clinical">
-                        <ul class="ats-skill-list">
-                            <li><span>Diagnostic & Therapeutic Care</span>Comprehensive patient assessment, clinical diagnostics, and cross-functional healthcare workflows.</li>
-                            <li><span>Evidence-Based Medicine</span>Interpreting complex clinical data, analyzing laboratory/imaging results, and executing precision treatment protocols.</li>
-                            <li><span>Global Healthcare Standards</span>Multilingual clinical communication, medical ethics adherence, and international healthcare compliance parameters.</li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-contents" id="engineering">
-                        <ul class="ats-skill-list">
-                            <li><span>AI System Integration & Logic</span>Configuring Large Language Model (LLM) APIs, developing custom automated workflow loops, and structuring advanced prompt ecosystems.</li>
-                            <li><span>WordPress Architecture</span>Full-site architecture customization, custom hooks, performance tuning, and structural scaling optimization.</li>
-                            <li><span>Vibe Coding & Prototyping</span>Utilizing artificial intelligence execution engines and programmatic frameworks to design, test, and rapidly scale functional interfaces.</li>
-                            <li><span>Medical Content Strategy</span>Translating intricate research documents, pharmacology, and clinical records into authoritative, search-engine-optimized digital text assets.</li>
-                        </ul>
+                    <div class="tab-contents active-tab" id="skills">
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3><i class="fas fa-stethoscope"></i> Clinical (MBBS)</h3>
+                                <ul>
+                                    <li><strong>Diagnostics &amp; Care:</strong> Comprehensive patient assessment and clinical management protocols.</li>
+                                    <li><strong>Evidence-Based Practice:</strong> Analytical medical literature tracing and precision workflow execution.</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3><i class="fas fa-code"></i> Engineering</h3>
+                                <ul>
+                                    <li><strong>WordPress Architecture:</strong> Core customization, systemic tuning, and full-stack deployment frameworks.</li>
+                                    <li><strong>Vibe Coding Mastery:</strong> Programmatic configuration leveraging AI IDE environments rapidly.</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3><i class="fas fa-brain"></i> AI Foundation</h3>
+                                <ul>
+                                    <li><strong>System Integration:</strong> Building systemic automation, programmatic pipelines, and LLM APIs.</li>
+                                    <li><strong>Prompt Engineering:</strong> Complex structural prompt mechanics for operational optimization.</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3><i class="fas fa-pen-fancy"></i> Medical Writing</h3>
+                                <ul>
+                                    <li><strong>Scientific Strategy:</strong> Content engineering translating complex research into high-authority literature.</li>
+                                    <li><strong>SEO Optimization:</strong> Digital copy management backed by stringent clinical validation.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="tab-contents" id="experience">
-                        <ul class="ats-skill-list">
-                            <li><span>Graduate Clinical Practice & Medical Rotation</span>Conducted comprehensive patient evaluations, multi-department diagnostics, and triage infrastructure across international hospital placements.</li>
-                            <li><span>Independent Digital Product Engineering (2015 - Present)</span>Contracting for corporate entities to architect high-conversion secure web models, customized interfaces, and monetized digital platforms.</li>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="timeline-date">2016 - 2022 / Post-Grad</span>
+                                <strong>Graduate Clinical Practice &amp; Medical Rotation</strong>
+                                <p>Executed multi-department diagnostic triage, physical evaluations, and inpatient support mechanisms during clinical medicine tenures.</p>
+                            </li>
+                            <li>
+                                <span class="timeline-date">2015 - Present</span>
+                                <strong>Independent Web Engineering &amp; Platform Contractor</strong>
+                                <p>Deployed customized web portals for private corporate consultancies under non-disclosure frameworks. Designed and monetized autonomous media assets utilizing advanced programmatic monetization protocols (Google AdSense).</p>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="tab-contents" id="education">
-                        <ul class="ats-skill-list">
-                            <li><span>June 2026</span>FMGE Licensure Candidate | National Board of Examinations (NBE).</li>
-                            <li><span>2025</span>Advanced Artificial Intelligence Systems & Framework Optimization Mastery.</li>
-                            <li><span>2016 - 2022</span>Bachelor of Medicine, Bachelor of Surgery (MBBS) | Mari State University (MarSU), Russia.</li>
-                            <li><span>2015</span>Full-Stack WordPress Core Systems & Deployment Framework Engineering.</li>
-                            <li><span>2015</span>Higher Secondary Education (Science & Mathematics Focus) | Rishi Galav Public School.</li>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="timeline-date">June 2026</span>
+                                <strong>FMGE Licensure Candidate</strong>
+                                <p>National Board of Examinations (NBE) - Prepared for official programmatic registration and clinical practice workflows in India.</p>
+                            </li>
+                            <li>
+                                <span class="timeline-date">2025</span>
+                                <strong>AI Integration &amp; Automated Systems Training</strong>
+                                <p>Deep dive research tracking multi-agent structures, autonomous script scaling, and context programmatic mapping.</p>
+                            </li>
+                            <li>
+                                <span class="timeline-date">2016 - 2022</span>
+                                <strong>Bachelor of Medicine, Bachelor of Surgery (MBBS)</strong>
+                                <p>Mari State University (MarSU), Russia. Global clinical health tracking and standardized systemic medical residency practice.</p>
+                            </li>
+                            <li>
+                                <span class="timeline-date">2015</span>
+                                <strong>Full-Stack WordPress Architecture Frameworks</strong>
+                                <p>Comprehensive self-directed technical curriculum exploring full architectural core mastery.</p>
+                            </li>
+                            <li>
+                                <span class="timeline-date">2015</span>
+                                <strong>Higher Secondary Education</strong>
+                                <p>Rishi Galav Public School. Accelerated focus metrics across pure Science and foundational Mathematics tracks.</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="services">
+    <section id="services">
         <div class="container">
-            <h2 class="sub-title">My Specializations</h2>
+            <h2 class="sub-title">Specialized Services</h2>
             <div class="services-list">
                 <div class="service-card">
-                    <div class="card-icon-box"><i class="fa-solid fa-user-doctor"></i></div>
-                    <h3>Clinical Healthcare</h3>
-                    <p>Providing evidence-based clinical insights, analytical patient assessments, and comprehensive telemedicine consulting solutions aligned with global health compliance standards.</p>
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <h3>Clinical Advisory &amp; Triage</h3>
+                    <p>Providing evidence-based analytical assessments, precision medical case studies, and advanced digital health consult modalities.</p>
                 </div>
                 <div class="service-card">
-                    <div class="card-icon-box"><i class="fa-solid fa-robot"></i></div>
-                    <h3>AI & Web Automation</h3>
-                    <p>Architecting custom web landscapes and WordPress ecosystems enhanced with automated artificial intelligence loops, prompt pipelines, and modern layout features.</p>
+                    <i class="fa-brands fa-wordpress-simple"></i>
+                    <h3>AI Engineering &amp; WordPress</h3>
+                    <p>Designing high-throughput, customized web architectures optimized via rapid vibe-coding frameworks and AI autonomous system triggers.</p>
                 </div>
                 <div class="service-card">
-                    <div class="card-icon-box"><i class="fa-sharp fa-solid fa-feather-pointed"></i></div>
-                    <h3>Medical Content Strategy</h3>
-                    <p>Generating scientifically accurate, medically validated documentation, whitepapers, and highly authoritative SEO-optimized text solutions using structural AI models.</p>
+                    <i class="fa-sharp fa-solid fa-feather-pointed"></i>
+                    <h3>Medical Content Writing</h3>
+                    <p>Engineering premium SEO-driven healthcare publications, technical documentation, and authoritative pharmacological scripts leveraging clinical expertise.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="portfolio">
+    <section id="portfolio">
         <div class="container">
-            <h2 class="sub-title">Recent Systems & Projects</h2>
+            <h2 class="sub-title">Strategic Projects</h2>
             <div class="work-list">
                 <div class="work">
-                    <div class="work-fallback-bg visual-project-1"></div>
+                    <img src="images/work-1.png" alt="Proprietary Consult Platform UI Interface Screen">
                     <div class="layer">
                         <h3>Proprietary Consultancy System</h3>
-                        <p>A completely customized, high-security web architecture deployed for an educational consultancy. Focused on high-speed UI layout response paths and advanced framework responsiveness.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <p>High-security custom portal optimized for operational execution, speed indexing, and fluid user journey models.</p>
+                        <span class="project-tag">Under NDA</span>
                     </div>
                 </div>
                 <div class="work">
-                    <div class="work-fallback-bg visual-project-2"></div>
+                    <img src="images/work-2.png" alt="Mari State University Informational Portal Design">
                     <div class="layer">
-                        <h3>Dynamic Monetized Media Architecture</h3>
-                        <p>A tailored custom content publishing engine engineered from scratch. Features high-performance semantic structure configurations, programmatic AdSense API injection, and tailored organic layout scaling elements.</p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <h3>MarSu Informational Ecosystem</h3>
+                        <p>Specialized educational routing portal built to handle multi-tiered academic tracking frameworks and responsive configurations.</p>
+                        <a href="https://maristateuniversity.in/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <div class="work">
-                    <div class="work-fallback-bg visual-project-3"></div>
+                    <img src="images/work-3.png" alt="Monetized Blog Ecosystem Project Dashboard">
                     <div class="layer">
-                        <h3>Next-Gen Interface Prototyping</h3>
-                        <p>Active engineering of unique structural interface applications built using specialized modern AI vibe-coding models. Assets run in stealth deployment modes using proprietary prompt algorithms.</p>
+                        <h3>Monetized Media Engine</h3>
+                        <p>Custom media blog architecture engineered for granular organic search engine visibility and programmatic optimization structures (AdSense).</p>
                         <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
             </div>
-            <button class="btn centered-btn-element" onclick="alert('Stealth Mode Apps are protected under NDA. Request access via the contact panel.')">View Stealth Repository</button>
+            
+            <div class="stealth-container">
+                <div class="stealth-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Active App Prototypes (Stealth Mode)</h3>
+                    <p>Developing unique technical solutions utilizing modern vibe-coding methodologies. Concepts kept secure to preserve proprietary layout models and intellectual property mechanics.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div id="contact">
+    <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="contact-left">
@@ -170,227 +226,43 @@
                     <p class="contact-method"><i class="fa-solid fa-envelope"></i> abhijeet.kashyap20@gmail.com</p>
                     <p class="contact-method"><i class="fa-solid fa-square-phone"></i> +91 9752581403</p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/abhiroccx" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/agape_philic/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.snapchat.com/add/agape_philic" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
-                        <a href="https://t.me/agape_philic" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/abhiroccx" target="_blank" rel="noopener" aria-label="Facebook Profile"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/agape_philic/" target="_blank" rel="noopener" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.snapchat.com/add/agape_philic" target="_blank" rel="noopener" aria-label="Snapchat Profile"><i class="fa-brands fa-snapchat"></i></a>
+                        <a href="https://t.me/agape_philic" target="_blank" rel="noopener" aria-label="Telegram Profile"><i class="fa-brands fa-telegram"></i></a>
                     </div>
-                    <button onclick="openCVModal()" class="btn primary-btn mt-4"><i class="fas fa-lock"></i> Request Full CV Access</button>
                 </div>
                 <div class="contact-right">
-                    <form id="telegramContactForm">
-                        <div class="input-group">
-                            <input type="text" id="contactName" name="Name" placeholder="Your Legal Name / Enterprise" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="email" id="contactEmail" name="Email" placeholder="Your Professional Email" required>
-                        </div>
-                        <div class="input-group">
-                            <textarea id="contactMessage" name="Message" rows="6" placeholder="Project Description or Clinical Inquiry" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary-btn submit-btn-override" id="formSubmitBtn">
-                            <span id="btnText">Send Instant Message</span>
-                            <span id="btnSpinner" class="hidden-loader"><i class="fas fa-circle-notch fa-spin"></i></span>
-                        </button>
+                    <form id="contact-form">
+                        <input type="text" name="Name" placeholder="Your Full Name" required autocomplete="name">
+                        <input type="email" name="Email" placeholder="Your Professional Email" required autocomplete="email">
+                        <textarea name="Message" rows="5" placeholder="Your Project Specifications / Inquiry Details" required></textarea>
+                        <button type="submit" class="btn btn2">Transmit Message <i class="fas fa-paper-plane"></i></button>
                     </form>
                     <span id="msg"></span>
                 </div>
             </div>
         </div>
-    </div>
+        <footer class="copyright">
+            <p>Copyright &copy; 2026 Dr. Abhishek Kashyap. All Rights Reserved. Engineered with <i class="fa-solid fa-heart"></i> via agapephilic</p>
+        </footer>
+    </section>
 
-    <div id="cvModal" class="modal-overlay">
-        <div class="modal-card">
-            <div class="modal-header">
-                <h3><i class="fas fa-shield-alt"></i> Verified CV Access Portal</h3>
-                <i class="fas fa-times close-modal-btn" onclick="closeCVModal()"></i>
+    <div class="cv-modal" id="cv-modal" role="dialog" aria-hidden="true">
+        <div class="cv-modal-content">
+            <div class="cv-modal-header">
+                <h3><i class="fas fa-lock"></i> Verification Required</h3>
+                <i class="fas fa-times modal-close" id="modal-close-btn"></i>
             </div>
-            <p class="modal-subtext">Please fill out this structural log file sheet parameter tracking sequence to initiate the download engine pipeline.</p>
-            <form id="cvGatedForm">
-                <input type="email" id="cvEmail" placeholder="Enter Your Professional Email Address" required>
-                <select id="cvPurpose" required>
-                    <option value="" disabled selected>Select Your Primary Objective</option>
-                    <option value="Medical Recruitment">Clinical Employment Recruitment</option>
-                    <option value="Tech Consulting Contract">WordPress / Web Application Project</option>
-                    <option value="HealthTech Strategic Project">AI Medical Integration Venture</option>
-                    <option value="General Inspection">General Academic Audit</option>
-                </select>
-                <button type="submit" class="btn modal-submit-btn">Verify Credentials & Download CV</button>
+            <p class="modal-sub">Please clarify your verification details to authorize the download stream of Dr. Abhishek's Executive CV.</p>
+            <form id="cv-gate-form">
+                <input type="email" id="cv-email" placeholder="Enter Your Professional Email" required>
+                <textarea id="cv-purpose" rows="3" placeholder="Specify Download Purpose (e.g., Clinical Hiring, AI Contract Work, Advisory Request)" required></textarea>
+                <button type="submit" class="btn w-100">Authorize &amp; Download <i class="fas fa-download"></i></button>
             </form>
         </div>
     </div>
 
-    <div class="copyright">
-        <p>Copyright © 2026 Dr. Abhishek Kashyap. All Rights Reserved. Crafted natively with <i class="fa-solid fa-heart"></i> via Vibe Coding.</p>
-    </div>
-
-    <script>
-        // TABBED NAVIGATION CONTROLLER ENGINE
-        function opentab(tabname, event) {
-            const tablinks = document.getElementsByClassName("tab-links");
-            const tabcontents = document.getElementsByClassName("tab-contents");
-            
-            for (let link of tablinks) {
-                link.classList.remove("active-link");
-            }
-            for (let content of tabcontents) {
-                content.classList.remove("active-tab");
-            }
-            
-            event.currentTarget.classList.add("active-link");
-            document.getElementById(tabname).classList.add("active-tab");
-        }
-
-        // RESPONSIVE SIDEBAR NAVIGATION TOGGLER
-        const sidemenu = document.getElementById("sidemenu");
-        function openmenu() {
-            sidemenu.style.right = "0";
-        }
-        function closemenu() {
-            sidemenu.style.right = "-250px";
-        }
-
-        // DYNAMIC TYPEWRITER identity ENGINE
-        const roles = [
-            "General Physician (MBBS)",
-            "AI Integration Specialist",
-            "WordPress & Vibe Coding Engineer",
-            "Medical Content Writer"
-        ];
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const targetDisplay = document.getElementById("dynamic-roles");
-
-        function typeLoop() {
-            const currentRole = roles[roleIndex];
-            if (!isDeleting) {
-                targetDisplay.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-                if (charIndex === currentRole.length) {
-                    isDeleting = true;
-                    setTimeout(typeLoop, 2000); // Wait time before backspacing starts
-                    return;
-                }
-            } else {
-                targetDisplay.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                }
-            }
-            setTimeout(typeLoop, isDeleting ? 40 : 80);
-        }
-        document.addEventListener("DOMContentLoaded", () => typeLoop());
-
-        // GATED SECURE CV MODAL TRIGGERS
-        const cvModal = document.getElementById("cvModal");
-        function openCVModal() {
-            cvModal.classList.add("modal-active");
-        }
-        function closeCVModal() {
-            cvModal.classList.remove("modal-active");
-        }
-
-        // GOOGLE SHEET CV AUDITING DOWNLOAD CONTROLLER
-        document.getElementById("cvGatedForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const email = document.getElementById("cvEmail").value;
-            const purpose = document.getElementById("cvPurpose").value;
-            const timestamp = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-
-            // Automated Webhook configuration pointing back directly to your Sheets Deployment URL
-            const sheetsDeploymentURL = "https://script.google.com/macros/s/AKfycbylxXkFWU3FRfO873j2E52JT8XlQa7s7tNNfNiUPaML_gmGjy767nc-qkba23gPN8Mg/exec";
-            
-            const payload = new FormData();
-            payload.append("Timestamp", timestamp);
-            payload.append("Email", email);
-            payload.append("Message", `CV DOWNLOAD INITIATED. Category Reason Objective: ${purpose}`);
-            payload.append("Name", "SECURE CV PORTAL CLIENT");
-
-            // Post auditing logs
-            fetch(sheetsDeploymentURL, { method: "POST", body: payload })
-            .then(() => {
-                // Initialize File Download Path Anchor
-                const downloadAnchor = document.createElement("a");
-                downloadAnchor.href = "Abhishek_Kashyap_CV.pdf"; 
-                downloadAnchor.download = "Dr_Abhishek_Kashyap_CV.pdf";
-                document.body.appendChild(downloadAnchor);
-                downloadAnchor.click();
-                document.body.removeChild(downloadAnchor);
-                closeCVModal();
-                document.getElementById("cvGatedForm").reset();
-            })
-            .catch(err => {
-                // Failback execution path to let user retrieve file even if API fails
-                const downloadAnchor = document.createElement("a");
-                downloadAnchor.href = "Abhishek_Kashyap_CV.pdf";
-                downloadAnchor.download = "Dr_Abhishek_Kashyap_CV.pdf";
-                document.body.appendChild(downloadAnchor);
-                downloadAnchor.click();
-                document.body.removeChild(downloadAnchor);
-                closeCVModal();
-            });
-        });
-
-        // CONTACT SUBMISSION DISPATCHER (TELEGRAM BOT ROUTER APIS)
-        document.getElementById("telegramContactForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            const btnText = document.getElementById("btnText");
-            const btnSpinner = document.getElementById("btnSpinner");
-            const msgStatus = document.getElementById("msg");
-            
-            // Toggle visual load animations
-            btnText.textContent = "Transmitting Message...";
-            btnSpinner.classList.remove("hidden-loader");
-
-            const name = document.getElementById("contactName").value;
-            const email = document.getElementById("contactEmail").value;
-            const message = document.getElementById("contactMessage").value;
-
-            // Telegram API Parameters
-            const botToken = "7154567201:AAEbYw93rExPm_CqFmY20H1Vlx6Z-Q5uSGo"; // Secure Bot Token
-            const chatId = "1042301540"; // Your Target Personal Endpoint Identity ChatID
-            
-            const cleanTextString = `🔔 Portfolio Communication Received!\n\n👤 Sender Identity: ${name}\n📧 Mail Destination: ${email}\n💬 Log File Narrative:\n"${message}"`;
-            
-            const endpointTelegramAPI = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-            // Phase 1 Transmission Loop: Send to Telegram
-            fetch(endpointTelegramAPI, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chat_id: chatId, text: cleanTextString })
-            })
-            .then(res => {
-                // Phase 2 Transmission Backup Route: Post logs to background spreadsheet
-                const secondaryPayload = new FormData();
-                secondaryPayload.append("Name", name);
-                secondaryPayload.append("Email", email);
-                secondaryPayload.append("Message", message);
-                
-                return fetch("https://script.google.com/macros/s/AKfycbylxXkFWU3FRfO873j2E52JT8XlQa7s7tNNfNiUPaML_gmGjy767nc-qkba23gPN8Mg/exec", {
-                    method: "POST",
-                    body: secondaryPayload
-                });
-            })
-            .then(() => {
-                msgStatus.style.color = "#61b752";
-                msgStatus.innerHTML = "<i class='fas fa-check-circle'></i> Secured transmission path completed successfully.";
-                document.getElementById("telegramContactForm").reset();
-            })
-            .catch(err => {
-                msgStatus.style.color = "#ff004f";
-                msgStatus.innerHTML = "<i class='fas fa-exclamation-triangle'></i> Connectivity timeout error. Please check your system network.";
-            })
-            .finally(() => {
-                btnText.textContent = "Send Instant Message";
-                btnSpinner.classList.add("hidden-loader");
-                setTimeout(() => { msgStatus.innerHTML = ""; }, 6000);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
