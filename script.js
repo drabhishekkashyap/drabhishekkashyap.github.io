@@ -426,3 +426,24 @@ function redeemShopCoupon(name, price) {
     deductTokens(price, `Redeemed Love Store Voucher: ${name}`);
     alert(`🎉 Successfully claimed: ${name}! Abhi has been notified!`);
 }
+
+// ==========================================
+// MASTER KEY BYPASS
+// ==========================================
+function useMasterKey() {
+    const key = prompt("Enter Boyfriend Master Key:");
+    
+    // Set your secret key here (Change 'boyfriend' to whatever you want)
+    if (key === "Boyfriend") {
+        document.getElementById('fairy-welcome-screen').classList.remove('active');
+        document.getElementById('zine-dashboard-screen').classList.add('active');
+        
+        // Load the dashboard without checking tokens
+        buildCalendarGrid();
+        setupQuiz();
+        alert("Master Key Accepted! Access Granted. 👑");
+        logDiscord("🔑 Master Key Used", "Abhi accessed the dashboard using the Master Key.");
+    } else {
+        alert("Invalid Key! 🚫");
+    }
+}
