@@ -1,265 +1,180 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Abhishek Kashyap | Physician & AI Tech Innovator</title>
-    <meta name="description" content="Portfolio of Dr. Abhishek Kashyap (MBBS) - General Physician, AI Integration Specialist, WordPress Developer, and Medical Content Writer.">
+    <title>Princess Diary 👑</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/de08c02929.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
 
-    <div class="theme-toggle" id="theme-btn" aria-label="Toggle visual theme">
-        <i class="fas fa-moon"></i>
+    <canvas id="scrapbookCanvas"></canvas>
+
+    <!-- FLOATING "I MISS YOU" BUTTON -->
+    <button id="miss-you-btn" onclick="triggerMissYou()">🥺 I Miss You</button>
+
+    <!-- STAGE 1: LOCK HUNT -->
+    <div id="lock-hunt-screen" class="zine-screen active">
+        <div class="fairytale-header">
+            <h1>Princess Diary 👑</h1>
+            <p class="subtitle">Find the hidden lock among magical charms...</p>
+        </div>
+        <div id="collage-game-container"></div>
     </div>
 
-    <header id="navbar">
-        <nav class="container">
-            <div class="logo">Abhishek<span>.</span></div>
-            <ul id="sidemenu">
-                <li><a href="#header" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <i class="fas fa-times menu-icon-close" id="menu-close"></i>
-            </ul>
-            <i class="fas fa-bars menu-icon-open" id="menu-open"></i>
-        </nav>
-    </header>
-
-    <section id="header">
-        <div class="container hero-wrapper">
-            <div class="header-text">
-                <p class="hero-subtitle">Clinical Excellence &amp; Intelligent Automation</p>
-                <h1>Hi, I'm <span>Abhishek</span><br>Kashyap</h1>
-                <div class="typing-container">
-                    <span class="static-txt">Expertise in </span>
-                    <span class="dynamic-txt" id="typing-text"></span>
-                </div>
-                <p class="hero-location"><i class="fas fa-map-marker-alt"></i> Based in Gwalior</p>
-                <div class="hero-cta-group">
-                    <a href="#contact" class="btn">Let's Connect</a>
-                    <button class="btn btn-alt" id="cv-trigger">Download CV</button>
-                </div>
+    <!-- STAGE 2: THE RIDDLE GATEWAY -->
+    <div id="riddle-gate-screen" class="zine-screen">
+        <div class="riddle-card-wrapper">
+            <h2>The Secret Key Riddle 🌹</h2>
+            <p class="riddle-prose">"Jo mere dil ki rani hai... Batao aapka naam kya hai?"</p>
+            <div class="input-gate-group">
+                <input type="text" id="riddle-input" placeholder="Type your name here..." autocomplete="off">
+                <button onclick="verifyGateKey()">Unlock Memory Lane 🔑</button>
             </div>
-            <div class="header-img-box">
-                <div class="hero-frame">
-                    <img src="images/hero-portrait.jpg" alt="Dr. Abhishek Kashyap - Professional Portrait">
-                </div>
-            </div>
+            <p id="gate-error" class="error-toast-msg"></p>
         </div>
-    </section>
+    </div>
 
-    <section id="about">
-        <div class="container">
-            <div class="row">
-                <div class="about-col-1">
-                    <div class="about-img-wrapper">
-                        <img src="images/user.png" alt="Abhishek Kashyap Technical Bio Photo">
+    <!-- STAGE 3: THE FAIRY WELCOME PORTAL (UPDATED WITH HASH BUTTON) -->
+    <div id="fairy-welcome-screen" class="zine-screen">
+        <div class="welcome-parchment">
+            <h2>Welcome, My Princess! ✨</h2>
+            <p class="welcome-storytext">Entering the scrapbook costs 1 Love Token.</p>
+            <button onclick="launchScrapbookDashboard()" style="margin-bottom: 1rem;">Enter Scrapbook (Cost: 1 🪙)</button>
+            
+            <!-- ENCRYPTED HASH REDEEM BUTTON -->
+            <button onclick="redeemGiftCode()" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">🔐 System Sync (Paste Hash)</button>
+        </div>
+    </div>
+
+    <!-- STAGE 4: MAIN DASHBOARD -->
+    <div id="zine-dashboard-screen" class="zine-screen">
+        
+        <header class="dashboard-glance-bar">
+            <h2>Princess Diary 👑</h2>
+            <div class="telemetry-pill-container">
+                <div class="stat-badge streak">🔥 Streak: <span id="streak-count">1 Day</span></div>
+                <div class="stat-badge tokens" id="wallet-badge">🪙 Wallet: <span id="token-count">0</span> Love Tokens</div>
+            </div>
+        </header>
+
+        <nav class="zine-navigation-tabs">
+            <button class="zine-tab-link active" onclick="switchZineTab('tab-calendar')">📅 Calendar & Chat</button>
+            <button class="zine-tab-link" onclick="switchZineTab('tab-letter')">💌 Love Envelope</button>
+            <button class="zine-tab-link" onclick="switchZineTab('tab-games')">🎡 Fun & Store</button>
+        </nav>
+
+        <main class="zine-viewport-window">
+
+            <!-- TAB A: CALENDAR & CHAT -->
+            <section id="tab-calendar" class="zine-tab-panel">
+                <div class="scrapbook-widget mood-logger-widget">
+                    <h3>How is my Princess feeling today? 💕</h3>
+                    <p class="context-caption-lbl">Costs 1 Token</p>
+                    <div class="mood-button-row">
+                        <button onclick="submitMoodLog('Happy 🥰')">🥰 Happy</button>
+                        <button onclick="submitMoodLog('Loved 🌹')">🌹 Loved</button>
+                        <button onclick="submitMoodLog('Missing You 🥺')">🥺 Missing</button>
+                        <button onclick="submitMoodLog('Nakhre Mode 😤')">😤 Angry</button>
                     </div>
                 </div>
-                <div class="about-col-2">
-                    <h2 class="sub-title">About Me</h2>
-                    <p class="about-bio-text">
-                        I am a clinical professional and technical innovator with a Bachelor of Medicine and Bachelor of Surgery (MBBS) from Mari State University, Russia. Parallel to my medical practice, I have established a strong engineering foundation specializing in WordPress architecture, modern vibe-coding methodologies, and AI integration workflows. Driven by deep professional curiosity, I operate at the intersection of healthcare, intelligent automation, and technical communication. I leverage artificial intelligence to design high-performance digital ecosystems, build responsive web interfaces, and generate authoritative, medically validated content.
-                    </p>
 
-                    <div class="tab-titles">
-                        <p class="tab-links active-link" data-tab="skills">Skills Matrix</p>
-                        <p class="tab-links" data-tab="experience">Experience</p>
-                        <p class="tab-links" data-tab="education">Education &amp; Milestones</p>
-                    </div>
+                <div class="scrapbook-widget assign-dare-widget">
+                    <h3>Direct Message to Abhi 💌</h3>
+                    <p class="context-caption-lbl">Send a direct text to Abhi. (Cost: 1 Token/Msg)</p>
+                    <input type="text" id="direct-msg-input" placeholder="Type your message here..." autocomplete="off">
+                    <button onclick="sendDirectMessage()">Send Message (Cost: 1 🪙)</button>
+                </div>
 
-                    <div class="tab-contents active-tab" id="skills">
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h3><i class="fas fa-stethoscope"></i> Clinical (MBBS)</h3>
-                                <ul>
-                                    <li><strong>Diagnostics &amp; Care:</strong> Comprehensive patient assessment and clinical management protocols.</li>
-                                    <li><strong>Evidence-Based Practice:</strong> Analytical medical literature tracing and precision workflow execution.</li>
-                                </ul>
-                            </div>
-                            <div class="skill-category">
-                                <h3><i class="fas fa-code"></i> Engineering</h3>
-                                <ul>
-                                    <li><strong>WordPress Architecture:</strong> Core customization, systemic tuning, and full-stack deployment frameworks.</li>
-                                    <li><strong>Vibe Coding Mastery:</strong> Programmatic configuration leveraging AI IDE environments rapidly.</li>
-                                </ul>
-                            </div>
-                            <div class="skill-category">
-                                <h3><i class="fas fa-brain"></i> AI Foundation</h3>
-                                <ul>
-                                    <li><strong>System Integration:</strong> Building systemic automation, programmatic pipelines, and LLM APIs.</li>
-                                    <li><strong>Prompt Engineering:</strong> Complex structural prompt mechanics for operational optimization.</li>
-                                </ul>
-                            </div>
-                            <div class="skill-category">
-                                <h3><i class="fas fa-pen-fancy"></i> Medical Writing</h3>
-                                <ul>
-                                    <li><strong>Scientific Strategy:</strong> Content engineering translating complex research into high-authority literature.</li>
-                                    <li><strong>SEO Optimization:</strong> Digital copy management backed by stringent clinical validation.</li>
-                                </ul>
-                            </div>
+                <div class="scrapbook-widget calendar-grid-widget">
+                    <h3>Your Love Calendar</h3>
+                    <div id="zineCalendarGrid" class="tactile-stamps-grid"></div>
+                </div>
+            </section>
+
+            <!-- TAB B: LOVE ENVELOPE -->
+            <section id="tab-letter" class="zine-tab-panel hidden">
+                <div class="scrapbook-widget envelope-containment-deck">
+                    <h3>Weekly Sealed Letter</h3>
+                    <p class="context-caption-lbl">Break the wax seal to read this week's letter. (Cost: 2 Tokens)</p>
+                    
+                    <div id="zineEnvelope" class="interactive-envelope-shell">
+                        <div class="envelope-flap-top"></div>
+                        <div class="envelope-pocket-body"></div>
+                        <div id="envelope-seal-btn" class="envelope-seal-button" onclick="openEnvelopeSeal()">❤ Seal (2 🪙)</div>
+                        <div class="envelope-letter-sheet">
+                            <p id="letter-content-render" class="letter-prose-text hidden-text"></p>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div class="tab-contents" id="experience">
-                        <ul class="timeline-list">
-                            <li>
-                                <span class="timeline-date">2016 - 2022 / Post-Grad</span>
-                                <strong>Graduate Clinical Practice &amp; Medical Rotation</strong>
-                                <p>Executed multi-department diagnostic triage, physical evaluations, and inpatient support mechanisms during clinical medicine tenures.</p>
-                            </li>
-                            <li>
-                                <span class="timeline-date">2015 - Present</span>
-                                <strong>Independent Web Engineering &amp; Platform Contractor</strong>
-                                <p>Deployed customized web portals for private corporate consultancies under non-disclosure frameworks. Designed and monetized autonomous media assets utilizing advanced programmatic monetization protocols (Google AdSense).</p>
-                            </li>
-                        </ul>
+            <!-- TAB C: GAMES & STORE -->
+            <section id="tab-games" class="zine-tab-panel hidden">
+                <div class="scrapbook-widget interactive-trivia-widget">
+                    <h3>Daily Relationship Quiz</h3>
+                    <p class="context-caption-lbl">Win 5 Tokens for a correct answer!</p>
+                    <div id="quiz-active-block">
+                        <p id="quiz-question-lbl" class="trivia-question-prompt"></p>
+                        <div id="quiz-options-box" class="trivia-buttons-matrix"></div>
+                    </div>
+                </div>
+
+                <div class="scrapbook-widget destiny-wheel-widget">
+                    <h3>Destiny Wheel of Romance</h3>
+                    <p class="context-caption-lbl">Costs 3 Tokens per spin</p>
+                    <div class="wheel-canvas-wrapper">
+                        <canvas id="wheelCanvas" width="260" height="260"></canvas>
+                        <div class="wheel-pointer-marker">▼</div>
+                    </div>
+                    <button class="wheel-spin-trigger-btn" onclick="triggerDestinyWheelRotation()">Spin Wheel (Cost: 3 🪙)</button>
+                    <p id="wheel-result-lbl"></p>
+                </div>
+
+                <div class="scrapbook-widget voucher-shop-widget">
+                    <h3>Love Store 🛍️</h3>
+                    
+                    <h4 style="color:var(--magic-glow); margin-top:1rem;">Give Me Right Now (Instant Actions)</h4>
+                    <div class="store-grid-layout">
+                        <div class="shop-item-sticker-card"><h4>Give Me a Kiss 💋</h4><p>Cost: 15</p><button onclick="redeemShopCoupon('Give Me a Kiss', 15)">Claim</button></div>
+                        <div class="shop-item-sticker-card"><h4>I Need a Huggy 🧸</h4><p>Cost: 20</p><button onclick="redeemShopCoupon('I Need a Huggy', 20)">Claim</button></div>
+                        <div class="shop-item-sticker-card"><h4>Princess Treatment 👑</h4><p>Cost: 30</p><button onclick="redeemShopCoupon('Princess Treatment', 30)">Claim</button></div>
                     </div>
 
-                    <div class="tab-contents" id="education">
-                        <ul class="timeline-list">
-                            <li>
-                                <span class="timeline-date">June 2026</span>
-                                <strong>FMGE Licensure Candidate</strong>
-                                <p>National Board of Examinations (NBE) - Prepared for official programmatic registration and clinical practice workflows in India.</p>
-                            </li>
-                            <li>
-                                <span class="timeline-date">2025</span>
-                                <strong>AI Integration &amp; Automated Systems Training</strong>
-                                <p>Deep dive research tracking multi-agent structures, autonomous script scaling, and context programmatic mapping.</p>
-                            </li>
-                            <li>
-                                <span class="timeline-date">2016 - 2022</span>
-                                <strong>Bachelor of Medicine, Bachelor of Surgery (MBBS)</strong>
-                                <p>Mari State University (MarSU), Russia. Global clinical health tracking and standardized systemic medical residency practice.</p>
-                            </li>
-                            <li>
-                                <span class="timeline-date">2015</span>
-                                <strong>Full-Stack WordPress Architecture Frameworks</strong>
-                                <p>Comprehensive self-directed technical curriculum exploring full architectural core mastery.</p>
-                            </li>
-                            <li>
-                                <span class="timeline-date">2015</span>
-                                <strong>Higher Secondary Education</strong>
-                                <p>Rishi Galav Public School. Accelerated focus metrics across pure Science and foundational Mathematics tracks.</p>
-                            </li>
-                        </ul>
+                    <h4 style="color:var(--magic-glow); margin-top:1rem;">Take Me Out (Date Vouchers)</h4>
+                    <div class="store-grid-layout">
+                        <div class="shop-item-sticker-card"><h4>Coffee Date ☕</h4><p>Cost: 50</p><button onclick="redeemShopCoupon('Coffee Date', 50)">Claim</button></div>
+                        <div class="shop-item-sticker-card"><h4>Buy Me Ice Cream 🍦</h4><p>Cost: 60</p><button onclick="redeemShopCoupon('Buy Me Ice Cream', 60)">Claim</button></div>
+                        <div class="shop-item-sticker-card"><h4>Movie Date 🎬</h4><p>Cost: 100</p><button onclick="redeemShopCoupon('Movie Date', 100)">Claim</button></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        </main>
+    </div>
 
-    <section id="services">
-        <div class="container">
-            <h2 class="sub-title">Specialized Services</h2>
-            <div class="services-list">
-                <div class="service-card">
-                    <i class="fa-solid fa-user-doctor"></i>
-                    <h3>Clinical Advisory &amp; Triage</h3>
-                    <p>Providing evidence-based analytical assessments, precision medical case studies, and advanced digital health consult modalities.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fa-brands fa-wordpress-simple"></i>
-                    <h3>AI Engineering &amp; WordPress</h3>
-                    <p>Designing high-throughput, customized web architectures optimized via rapid vibe-coding frameworks and AI autonomous system triggers.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fa-sharp fa-solid fa-feather-pointed"></i>
-                    <h3>Medical Content Writing</h3>
-                    <p>Engineering premium SEO-driven healthcare publications, technical documentation, and authoritative pharmacological scripts leveraging clinical expertise.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="container">
-            <h2 class="sub-title">Strategic Projects</h2>
-            <div class="work-list">
-                <div class="work">
-                    <img src="images/work-1.png" alt="Proprietary Consult Platform UI Interface Screen">
-                    <div class="layer">
-                        <h3>Proprietary Consultancy System</h3>
-                        <p>High-security custom portal optimized for operational execution, speed indexing, and fluid user journey models.</p>
-                        <span class="project-tag">Under NDA</span>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="images/work-2.png" alt="Mari State University Informational Portal Design">
-                    <div class="layer">
-                        <h3>MarSu Informational Ecosystem</h3>
-                        <p>Specialized educational routing portal built to handle multi-tiered academic tracking frameworks and responsive configurations.</p>
-                        <a href="https://maristateuniversity.in/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <div class="work">
-                    <img src="images/work-3.png" alt="Monetized Blog Ecosystem Project Dashboard">
-                    <div class="layer">
-                        <h3>Monetized Media Engine</h3>
-                        <p>Custom media blog architecture engineered for granular organic search engine visibility and programmatic optimization structures (AdSense).</p>
-                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
+    <!-- CALENDAR DATE MODAL -->
+    <div id="zine-modal" class="modal-backdrop-blur hidden">
+        <div class="modal-sticker-paper-sheet">
+            <button class="close-modal-btn" onclick="closeZineModal()">×</button>
+            <h2 id="modal-date-title">Date Matrix</h2>
+            <div class="modal-section-box">
+                <p id="modal-dare-para" style="font-weight: bold; color: var(--magic-glow); margin-bottom: 1rem;"></p>
+                <p id="modal-alternative-para" style="font-style: italic; font-size: 0.9em; opacity: 0.8;"></p>
             </div>
             
-            <div class="stealth-container">
-                <div class="stealth-card">
-                    <i class="fas fa-user-secret"></i>
-                    <h3>Active App Prototypes (Stealth Mode)</h3>
-                    <p>Developing unique technical solutions utilizing modern vibe-coding methodologies. Concepts kept secure to preserve proprietary layout models and intellectual property mechanics.</p>
-                </div>
+            <div id="modal-action-block">
+                <button id="accept-dare-btn" style="background:#22c55e;" onclick="commitTaskChoice(true)">Accept (Cost: 20%)</button>
+                <button id="reject-dare-btn" style="background:#ef4444;" onclick="commitTaskChoice(false)">Reject (Cost: 80%)</button>
             </div>
-        </div>
-    </section>
 
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="contact-left">
-                    <h2 class="sub-title">Let's Connect</h2>
-                    <p class="contact-method"><i class="fa-solid fa-envelope"></i> abhijeet.kashyap20@gmail.com</p>
-                    <p class="contact-method"><i class="fa-solid fa-square-phone"></i> +91 9752581403</p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/abhiroccx" target="_blank" rel="noopener" aria-label="Facebook Profile"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/agape_philic/" target="_blank" rel="noopener" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.snapchat.com/add/agape_philic" target="_blank" rel="noopener" aria-label="Snapchat Profile"><i class="fa-brands fa-snapchat"></i></a>
-                        <a href="https://t.me/agape_philic" target="_blank" rel="noopener" aria-label="Telegram Profile"><i class="fa-brands fa-telegram"></i></a>
-                    </div>
-                </div>
-                <div class="contact-right">
-                    <form id="contact-form">
-                        <input type="text" name="Name" placeholder="Your Full Name" required autocomplete="name">
-                        <input type="email" name="Email" placeholder="Your Professional Email" required autocomplete="email">
-                        <textarea name="Message" rows="5" placeholder="Your Project Specifications / Inquiry Details" required></textarea>
-                        <button type="submit" class="btn btn2">Transmit Message <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                    <span id="msg"></span>
-                </div>
-            </div>
-        </div>
-        <footer class="copyright">
-            <p>Copyright &copy; 2026 Dr. Abhishek Kashyap. All Rights Reserved. Engineered with <i class="fa-solid fa-heart"></i> via agapephilic</p>
-        </footer>
-    </section>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0;">
 
-    <div class="cv-modal" id="cv-modal" role="dialog" aria-hidden="true">
-        <div class="cv-modal-content">
-            <div class="cv-modal-header">
-                <h3><i class="fas fa-lock"></i> Verification Required</h3>
-                <i class="fas fa-times modal-close" id="modal-close-btn"></i>
+            <div class="modal-section-box">
+                <h4 style="color: #00d2ff; margin-bottom: 0.5rem;">Assign Abhi a Truth/Dare</h4>
+                <input type="text" id="calendar-abhi-dare-input" placeholder="Type a dare for Abhi..." style="width:100%; padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem;">
+                <button style="width:100%; background: linear-gradient(135deg, #00d2ff, #0066ff);" onclick="assignDareFromCalendar()">Assign to Abhi (Cost: 5 🪙)</button>
             </div>
-            <p class="modal-sub">Please clarify your verification details to authorize the download stream of Dr. Abhishek's Executive CV.</p>
-            <form id="cv-gate-form">
-                <input type="email" id="cv-email" placeholder="Enter Your Professional Email" required>
-                <textarea id="cv-purpose" rows="3" placeholder="Specify Download Purpose (e.g., Clinical Hiring, AI Contract Work, Advisory Request)" required></textarea>
-                <button type="submit" class="btn w-100">Authorize &amp; Download <i class="fas fa-download"></i></button>
-            </form>
         </div>
     </div>
 
