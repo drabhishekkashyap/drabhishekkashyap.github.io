@@ -431,7 +431,7 @@ function redeemShopCoupon(name, price) {
 // MASTER KEY BYPASS
 // ==========================================
 function useMasterKey() {
-    const key = prompt("Enter Boyfriend Master Key:");
+    const key = prompt("Enter Boyfriend Master Key: Boyfriend");
     
     // Set your secret key here (Change 'boyfriend' to whatever you want)
     if (key === "Boyfriend") {
