@@ -80,7 +80,7 @@ function addTokens(amount, reasonText) {
     logDiscord(`✨ Tokens Gained: +${amount}`, reasonText);
 }
 
-// SECRET ADMIN OVERRIDE
+// SECRET ADMIN OVERRIDE (Clicking the Wallet Badge)
 function triggerSecretAdminRefill() {
     const overrideInput = prompt("System Sync: Override Node:");
     if (!overrideInput) return;
@@ -121,26 +121,6 @@ function redeemGiftCode() {
         alert(`Access Granted! 🎉 ${amount} Love Tokens instantly added to your wallet!`);
     } else {
         alert("Invalid Hash! 🥺 Dhyan se copy-paste karo ya Abhi se naya code maango.");
-    }
-}
-
-// ==========================================
-// MASTER KEY BYPASS (ADMIN ACCESS)
-// ==========================================
-function useMasterKey() {
-    const key = prompt("Enter Boyfriend Master Key:");
-    if (key === "ABHI-KING") { 
-        // Bypasses screens and goes straight to dashboard
-        document.querySelectorAll('.zine-screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('zine-dashboard-screen').classList.add('active');
-        buildCalendarGrid();
-        setupQuiz();
-        document.getElementById('token-count').innerText = currentTokens;
-        document.getElementById('streak-count').innerText = `${currentStreak} Day(s)`;
-        alert("Master Key Accepted! Access Granted. 👑");
-        logDiscord("🔑 Master Key Used", "Abhi accessed the dashboard using the Master Key.");
-    } else {
-        alert("Invalid Key! 🚫");
     }
 }
 
@@ -209,7 +189,7 @@ window.onload = () => {
 };
 
 // ==========================================
-// SCREENS & GATES
+// SCREENS & GATES (WITH SECRET ADMIN LOGIN)
 // ==========================================
 function setupTargetGrid() {
     const space = document.getElementById('collage-game-container'); space.innerHTML = "";
@@ -231,17 +211,33 @@ function setupTargetGrid() {
 }
 
 function verifyGateKey() {
-    const input = document.getElementById('riddle-input').value.toLowerCase().trim();
-    if(['shweta', 'vaishali', 'shalu'].includes(input)) {
+    const input = document.getElementById('riddle-input').value.trim();
+    
+    // 1. ADMIN BACKDOOR CHECK
+    if (input.toUpperCase() === "ABHI-KING") {
+        alert("Welcome Abhishek! Master Key Accepted. 👑");
+        logDiscord("🔑 Admin Login Notification", "Abhishek just logged in to check the app updates.");
+        
+        // Skip straight to the dashboard
+        document.querySelectorAll('.zine-screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('zine-dashboard-screen').classList.add('active');
+        
+        buildCalendarGrid();
+        setupQuiz();
+        return; // Stop here so it doesn't run the rest of the code
+    }
+
+    // 2. HER NORMAL LOGIN
+    if(['shweta', 'vaishali', 'shalu'].includes(input.toLowerCase())) {
         document.getElementById('riddle-gate-screen').classList.remove('active');
         document.getElementById('fairy-welcome-screen').classList.add('active');
-    } else { document.getElementById('gate-error').innerText = "Galat jawab! Aapka hi naam toh mere dil ki chabi hai... 🌹"; }
+    } else { 
+        document.getElementById('gate-error').innerText = "Galat jawab! Aapka hi naam toh mere dil ki chabi hai... 🌹"; 
+    }
 }
 
 function launchScrapbookDashboard() {
-    // LOGIN IS NOW 100% FREE! Removed checkTokenBalance & deductTokens logic here.
-
-    // Streak Calculation
+    // LOGIN IS FREE! No tokens deducted for pressing "Enter Scrapbook"
     const todayStr = new Date().toDateString();
     if (lastLoginDate !== todayStr) {
         const yesterdayStr = new Date(Date.now() - 86400000).toDateString();
