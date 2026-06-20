@@ -1,6 +1,6 @@
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1516868901424726257/KbE6GMYT7LEPVKlxTmmhpdpU2H8MB-fImLF50V10hnTWYWKR5jDk0n6o21vBQvp4JBlh";
 
-// SYSTEM STATES (UPDATED WITH USED GIFT CODES)
+// SYSTEM STATES
 let currentTokens = parseInt(localStorage.getItem('pyaarTokens')) || 5; 
 let currentStreak = parseInt(localStorage.getItem('loveStreak')) || 0;
 let lastLoginDate = localStorage.getItem('lastLoginDate') || "";
@@ -99,24 +99,17 @@ function redeemGiftCode() {
     const codeInput = prompt("System Sync: Paste the authorization hash provided by Abhi 🔐");
     if (!codeInput) return;
 
-    // Convert to uppercase to avoid case-sensitivity issues if she copies it weirdly
     const code = codeInput.trim().toUpperCase();
     
-    // 1. Anti-Cheat: Check if she already used this specific hash
     if (usedGiftCodes.includes(code)) {
         alert("Arey! Yeh hash toh aap pehle hi use kar chuki ho. Smart banne ki koshish nahi! 😉");
         return;
     }
 
-    // 2. The Decryption Logic
-    // This strictly looks for "SA03HB09WH0402EITSAHT" + any numbers + "SEK"
     const match = code.match(/^SA03HB09WH0402EITSAHT(\d+)SEK$/);
     
     if (match) {
-        // match[1] extracts exactly whatever numbers are between the prefix and suffix
         const amount = parseInt(match[1]);
-        
-        // Add tokens, save the code as used, and notify Discord
         currentTokens += amount;
         localStorage.setItem('pyaarTokens', currentTokens);
         document.getElementById('token-count').innerText = currentTokens;
@@ -128,6 +121,26 @@ function redeemGiftCode() {
         alert(`Access Granted! 🎉 ${amount} Love Tokens instantly added to your wallet!`);
     } else {
         alert("Invalid Hash! 🥺 Dhyan se copy-paste karo ya Abhi se naya code maango.");
+    }
+}
+
+// ==========================================
+// MASTER KEY BYPASS (ADMIN ACCESS)
+// ==========================================
+function useMasterKey() {
+    const key = prompt("Enter Boyfriend Master Key:");
+    if (key === "ABHI-KING") { 
+        // Bypasses screens and goes straight to dashboard
+        document.querySelectorAll('.zine-screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('zine-dashboard-screen').classList.add('active');
+        buildCalendarGrid();
+        setupQuiz();
+        document.getElementById('token-count').innerText = currentTokens;
+        document.getElementById('streak-count').innerText = `${currentStreak} Day(s)`;
+        alert("Master Key Accepted! Access Granted. 👑");
+        logDiscord("🔑 Master Key Used", "Abhi accessed the dashboard using the Master Key.");
+    } else {
+        alert("Invalid Key! 🚫");
     }
 }
 
@@ -226,8 +239,7 @@ function verifyGateKey() {
 }
 
 function launchScrapbookDashboard() {
-    if (!checkTokenBalance(1)) return;
-    deductTokens(1, "Logged into the scrapbook.");
+    // LOGIN IS NOW 100% FREE! Removed checkTokenBalance & deductTokens logic here.
 
     // Streak Calculation
     const todayStr = new Date().toDateString();
@@ -425,25 +437,4 @@ function redeemShopCoupon(name, price) {
     if (!checkTokenBalance(price)) return;
     deductTokens(price, `Redeemed Love Store Voucher: ${name}`);
     alert(`🎉 Successfully claimed: ${name}! Abhi has been notified!`);
-}
-
-// ==========================================
-// MASTER KEY BYPASS
-// ==========================================
-function useMasterKey() {
-    const key = prompt("Enter Boyfriend Master Key: Boyfriend");
-    
-    // Set your secret key here (Change 'boyfriend' to whatever you want)
-    if (key === "Boyfriend") {
-        document.getElementById('fairy-welcome-screen').classList.remove('active');
-        document.getElementById('zine-dashboard-screen').classList.add('active');
-        
-        // Load the dashboard without checking tokens
-        buildCalendarGrid();
-        setupQuiz();
-        alert("Master Key Accepted! Access Granted. 👑");
-        logDiscord("🔑 Master Key Used", "Abhi accessed the dashboard using the Master Key.");
-    } else {
-        alert("Invalid Key! 🚫");
-    }
 }
