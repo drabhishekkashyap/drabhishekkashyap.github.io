@@ -21,6 +21,7 @@
             <p class="subtitle">Find the hidden lock among magical charms...</p>
         </div>
         <div id="collage-game-container"></div>
+        <button onclick="useMasterKey()" style="margin-top: 2rem; background: #333; width: auto; font-size: 0.8rem; padding: 0.5rem 1rem;">Admin Key 🔑</button>
     </div>
 
     <!-- STAGE 2: THE RIDDLE GATEWAY -->
@@ -36,21 +37,19 @@
         </div>
     </div>
 
-        <!-- STAGE 3: THE FAIRY WELCOME PORTAL -->
+    <!-- STAGE 3: THE FAIRY WELCOME PORTAL -->
     <div id="fairy-welcome-screen" class="zine-screen">
         <div class="welcome-parchment">
             <h2>Welcome, My Princess! ✨</h2>
-            <p class="welcome-storytext">Entering the scrapbook costs 1 Love Token.</p>
+            <!-- LOGIN IS NOW FREE! -->
+            <p class="welcome-storytext">Welcome back to our beautiful memory lane!</p>
             
-            <button onclick="launchScrapbookDashboard()" style="margin-bottom: 1rem;">Enter Scrapbook (Cost: 1 🪙)</button>
+            <button onclick="launchScrapbookDashboard()" style="margin-bottom: 1rem; background: var(--magic-glow);">Enter Scrapbook 💖</button>
             
-            <!-- MASTER KEY ACCESS -->
-            <button onclick="useMasterKey()" style="background: #ef4444; margin-bottom: 1rem;">Admin Master Key Access 🔑</button>
-            
-            <button onclick="redeemGiftCode()" style="background: linear-gradient(135deg, #10b981, #059669);">🔐 Redeem Secret Hash</button>
+            <!-- ENCRYPTED HASH REDEEM BUTTON -->
+            <button onclick="redeemGiftCode()" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">🔐 System Sync (Paste Hash)</button>
         </div>
     </div>
-
 
     <!-- STAGE 4: MAIN DASHBOARD -->
     <div id="zine-dashboard-screen" class="zine-screen">
