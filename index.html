@@ -36,17 +36,21 @@
         </div>
     </div>
 
-    <!-- STAGE 3: THE FAIRY WELCOME PORTAL (UPDATED WITH HASH BUTTON) -->
+        <!-- STAGE 3: THE FAIRY WELCOME PORTAL -->
     <div id="fairy-welcome-screen" class="zine-screen">
         <div class="welcome-parchment">
             <h2>Welcome, My Princess! ✨</h2>
             <p class="welcome-storytext">Entering the scrapbook costs 1 Love Token.</p>
+            
             <button onclick="launchScrapbookDashboard()" style="margin-bottom: 1rem;">Enter Scrapbook (Cost: 1 🪙)</button>
             
-            <!-- ENCRYPTED HASH REDEEM BUTTON -->
-            <button onclick="redeemGiftCode()" style="background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);">🔐 System Sync (Paste Hash)</button>
+            <!-- MASTER KEY ACCESS -->
+            <button onclick="useMasterKey()" style="background: #ef4444; margin-bottom: 1rem;">Admin Master Key Access 🔑</button>
+            
+            <button onclick="redeemGiftCode()" style="background: linear-gradient(135deg, #10b981, #059669);">🔐 Redeem Secret Hash</button>
         </div>
     </div>
+
 
     <!-- STAGE 4: MAIN DASHBOARD -->
     <div id="zine-dashboard-screen" class="zine-screen">
