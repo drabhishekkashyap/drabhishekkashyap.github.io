@@ -1,0 +1,411 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Dr. AK - Abhishek Kashyap | Clinical AI Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Utilities for Med-Tech Surrealist Aesthetic */
+        .glass-panel {
+            background: rgba(10, 25, 47, 0.1); /* Deep Space Navy with transparency */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(224, 242, 241, 0.1); /* Clinical Mint border */
+        }
+        .glass-panel-hover:hover {
+            background: rgba(10, 25, 47, 0.2);
+            box-shadow: 0 0 15px rgba(0, 209, 255, 0.2); /* Cyan outer glow */
+            border-color: rgba(0, 209, 255, 0.5);
+        }
+        .pulse-bloom:hover {
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.4);
+            transform: scale(1.02);
+        }
+        .scanline-highlight:hover .scan-bar {
+            width: 100%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scan-bar {
+            width: 0;
+            height: 2px;
+            background-color: #00D1FF;
+            transition: width 0.3s ease;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#1d2022",
+                        "on-tertiary-container": "#415151",
+                        "on-secondary-container": "#abb9d6",
+                        "on-secondary": "#233148",
+                        "on-secondary-fixed": "#0d1c32",
+                        "on-tertiary-fixed-variant": "#3a4a49",
+                        "surface-container-lowest": "#0b0f10",
+                        "outline-variant": "#3c494e",
+                        "inverse-on-surface": "#2d3133",
+                        "on-primary": "#003543",
+                        "on-surface": "#e0e3e5",
+                        "on-primary-container": "#00566a",
+                        "tertiary-fixed": "#d4e6e5",
+                        "surface-variant": "#323537",
+                        "on-primary-fixed": "#001f28",
+                        "primary": "#a4e6ff",
+                        "inverse-surface": "#e0e3e5",
+                        "primary-fixed": "#b7eaff",
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "on-tertiary-fixed": "#0e1e1e",
+                        "on-tertiary": "#233333",
+                        "tertiary-fixed-dim": "#b8cac9",
+                        "surface-container-highest": "#323537",
+                        "outline": "#859399",
+                        "surface-container-high": "#272a2c",
+                        "surface-tint": "#4cd6ff",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "error-container": "#93000a",
+                        "surface-dim": "#101415",
+                        "tertiary-container": "#b2c4c3",
+                        "inverse-primary": "#00677f",
+                        "primary-container": "#00d1ff",
+                        "tertiary": "#cee0df",
+                        "on-primary-fixed-variant": "#004e60",
+                        "primary-fixed-dim": "#4cd6ff",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#d6e3ff",
+                        "error": "#ffb4ab",
+                        "on-background": "#e0e3e5",
+                        "on-surface-variant": "#bbc9cf",
+                        "secondary": "#b9c7e4",
+                        "secondary-container": "#3c4962",
+                        "surface-container-low": "#191c1e",
+                        "surface-bright": "#363a3b",
+                        "surface": "#101415",
+                        "background": "#101415"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "margin-desktop": "80px",
+                        "container-max": "1440px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "code-label": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-md": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                        "code-label": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "display-lg": ["72px", { lineHeight: "80px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "display-lg-mobile": ["40px", { lineHeight: "48px", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0A192F] text-on-surface font-body-sm selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-outline-variant/10 shadow-[0_0_15px_rgba(0,209,255,0.1)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4"><img alt="Dr. AK Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLvT7qROtmlVXMAI1WK7KTT5hSIdUuAVxrtLo9tcSUQy3mT1Ks8SAHXZ2EvfwmP6rsq9_uy7_p33ngxpf4AgLN4aSgI6VwBSXet9ATbaPGLgxchrqgotLy7QWfZ89NzcDLF6sUovxb05krD_RqVbL_SQSGCRJGYf6a4mP2N3b7C8FeYZa442RNP6bVHv_AuDnPbsE2NUp-PcVLvzpEhVxpaFsBQhzwTNLUjlg_dJPf-G1ZS_dMkPW6xVRw"><span class="font-headline-md text-headline-md text-primary tracking-tighter hidden md:block">Dr. AK</span></div>
+<!-- Desktop Nav -->
+<ul class="hidden md:flex gap-8">
+<li class=""><a class="font-code-label text-code-label uppercase tracking-widest text-primary border-b border-primary pb-1 cursor-crosshair active:scale-95 hover:bg-primary/5 transition-all duration-300" href="#clinical">About</a></li>
+<li class=""><a class="font-code-label text-code-label uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-crosshair active:scale-95 hover:bg-primary/5 transition-all duration-300" href="#stack">Skills Matrix</a></li>
+<li class=""><a class="font-code-label text-code-label uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-crosshair active:scale-95 hover:bg-primary/5 transition-all duration-300" href="#projects">Projects</a></li>
+<li class=""><a class="font-code-label text-code-label uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-crosshair active:scale-95 hover:bg-primary/5 transition-all duration-300" href="#roadmap">Roadmap</a></li>
+<li class=""><a class="font-code-label text-code-label uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors cursor-crosshair active:scale-95 hover:bg-primary/5 transition-all duration-300" href="#contact">Contact</a></li>
+</ul>
+<!-- Mobile Nav Toggle (Simplified for demonstration) -->
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary text-2xl">menu</span>
+</div>
+<button class="hidden md:flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 font-code-label text-code-label uppercase tracking-widest pulse-bloom transition-all duration-300">
+<span class="material-symbols-outlined text-sm">terminal</span>
+                INITIATE_CONTACT
+            </button>
+</div>
+</nav>
+<!-- HERO Section -->
+<header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden px-margin-mobile md:px-margin-desktop">
+<!-- Background Animations -->
+<div class="absolute inset-0 z-0">
+</div>
+<div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+</div>
+<div class="relative z-20 max-w-container-max mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-8 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 border border-primary/30 bg-primary/5 glass-panel rounded-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-code-label text-code-label text-primary uppercase">Clinical Excellence • Generative AI &amp; Agentic AI Systems</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">
+                    Abhishek Kashyap <br>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-surface-tint">Engineering the Future of Health.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+<span class="block mb-2 text-primary text-sm font-code-label uppercase tracking-widest"><span class="material-symbols-outlined text-[16px] align-text-bottom mr-1">location_on</span>Based in Gwalior</span>
+                    A unique synthesis of clinical medical expertise and cutting-edge artificial intelligence. Deploying neural networks to solve complex biological protocols.
+                </p>
+<div class="pt-8 flex flex-wrap gap-4">
+<button class="bg-primary-container text-on-primary-container px-6 py-3 font-code-label text-code-label uppercase tracking-widest pulse-bloom transition-all duration-300 flex items-center gap-2">
+                        [+] DEPLOY_MODELS
+                    </button>
+<button class="border border-tertiary text-tertiary px-6 py-3 font-code-label text-code-label uppercase tracking-widest hover:bg-tertiary/10 transition-all duration-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">science</span>
+                        VIEW_DATA
+                    </button>
+</div>
+</div>
+<!-- Hero Data Widget -->
+<div class="md:col-span-4 hidden md:flex flex-col gap-4">
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group scanline-highlight">
+<div class="absolute top-2 right-2 font-code-label text-[10px] text-outline-variant">COORD: 45.912/12.44</div>
+<h3 class="font-code-label text-code-label text-primary mb-4 border-b border-outline-variant/30 pb-2">VITAL_METRICS</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-code-label text-[10px] text-on-surface-variant mb-1">
+<span class="">DIAGNOSTIC_ACCURACY</span>
+<span class="">99.4%</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[99.4%] shadow-[0_0_8px_#00d1ff]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-code-label text-[10px] text-on-surface-variant mb-1">
+<span class="">MODEL_EFFICIENCY</span>
+<span class="">12ms/inference</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[85%]"></div>
+</div>
+</div>
+</div>
+<div class="scan-bar absolute bottom-0 left-0"></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-24 space-y-32">
+<!-- Clinical Foundation Section -->
+<section class="relative" id="clinical">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-px bg-outline-variant flex-grow"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-widest">The Clinical Foundation</h2>
+<div class="h-px bg-outline-variant flex-grow"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-panel p-8 rounded-xl glass-panel-hover transition-all duration-500 relative">
+<div class="absolute top-4 right-4 font-code-label text-xs text-outline-variant">CERT: MBBS-8921</div>
+<span class="material-symbols-outlined text-primary text-4xl mb-6 block" style="font-variation-settings: 'FILL' 1;">local_hospital</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">About Me</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">
+                        I am a medical professional (MD Physician / MBBS, 360 credits / 7,624 academic hours from Mari State University) and software engineer specializing in AI in Healthcare, Generative AI, and Agentic AI architectures. Operating at the convergence of clinical medicine and modern artificial intelligence, I build autonomous multi-agent workflows, tool-calling LLM agents, and clinical decision support pipelines. I leverage advanced vibe-coding methodologies, RAG architectures, and custom WordPress systems to deliver intelligent healthtech solutions, high-throughput digital platforms, and medically validated AI literature.
+                    </p>
+<ul class="space-y-3 border-t border-outline-variant/30 pt-4">
+<li class="flex items-start gap-2 scanline-highlight relative pb-2 border-b border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_box_outline_blank</span>
+<span class="font-code-label text-code-label text-on-surface-variant">Internal Medicine Protocols</span>
+<div class="scan-bar absolute bottom-0 left-0"></div>
+</li>
+<li class="flex items-start gap-2 scanline-highlight relative pb-2 border-b border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-sm mt-1">check_box_outline_blank</span>
+<span class="font-code-label text-code-label text-on-surface-variant">Radiological Image Interpretation</span>
+<div class="scan-bar absolute bottom-0 left-0"></div>
+</li>
+</ul>
+</div>
+<div class="relative h-64 md:h-auto rounded-xl overflow-hidden glass-panel border border-outline-variant/20">
+<img class="object-cover w-full h-full opacity-60 mix-blend-luminosity hover:mix-blend-normal hover:opacity-100 transition-all duration-700" data-alt="A highly detailed, futuristic medical scanning interface showing a cross-section of a human brain integrated with glowing neural network nodes and data streams. High-key clinical lighting with deep space navy background and bright cyan accents. The aesthetic is clean, surreal, and precise, representing the merging of biology and artificial intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAebTLLci1QFL7sEkPorLUvqghDwNB7SlGNG8KHmXUKMY0SNmkiduVJhAz_k8wxruGuNJlAgc44JVAiNwr5Ic9qUSf5WOioMqnNt2LNqDw3hHo7VnC2TvF5wClPCawMRJlSdG1t1daFKGfmXxj5excro78_Wac1LQd_7Nf1WRHCOC7rvHqln32VDuPd6NcbvlAdG31P0DvTAMr3HKXnhFag2vU3vPjWRB8S71tYSEEfroVZLRUfwyM">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Neural Stack Section (Bento Grid) -->
+<section class="relative" id="stack">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-px bg-outline-variant w-12"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-widest">Skills Matrix</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter auto-rows-[200px]">
+<!-- Agentic AI -->
+<div class="md:col-span-2 md:row-span-2 glass-panel p-6 rounded-xl glass-panel-hover flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+<span class="font-code-label text-xs text-outline-variant">ML_CORE_01</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 group-hover:text-primary transition-colors">Agentic &amp; Generative AI</h3>
+<ul class="font-body-sm text-body-sm text-on-surface-variant list-disc pl-4 space-y-1">
+<li class=""><strong>Autonomous Agents:</strong> Multi-agent orchestration, tool-calling agents, and task execution loops.</li>
+<li class=""><strong>Generative AI &amp; RAG:</strong> Custom LLM API integration, Retrieval-Augmented Generation, and prompt engineering.</li>
+<li class=""><strong>Vibe-Coding Mastery:</strong> Rapid prototype engineering using AI IDEs and autonomous dev tools.</li>
+</ul>
+<div class="mt-4 flex gap-2">
+<span class="px-2 py-1 bg-surface-container-high rounded font-code-label text-[10px] text-primary">LLMs</span>
+<span class="px-2 py-1 bg-surface-container-high rounded font-code-label text-[10px] text-primary">RAG</span>
+</div>
+</div>
+</div>
+<!-- AI in Healthcare -->
+<div class="md:col-span-1 md:row-span-1 glass-panel p-6 rounded-xl glass-panel-hover flex flex-col justify-center">
+<span class="material-symbols-outlined text-tertiary mb-2 text-2xl">medical_services</span>
+<h4 class="font-code-label text-sm text-on-surface uppercase mb-1">AI in Healthcare</h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-2 line-clamp-2">Clinical decision support, health data analysis triage, and med-tech solutions.</p>
+<div class="h-1 w-full bg-surface-container-highest mt-2">
+<div class="h-full bg-primary-container w-[92%] shadow-[0_0_5px_#00d1ff]"></div>
+</div>
+</div>
+<!-- Clinical Medicine -->
+<div class="md:col-span-1 md:row-span-1 glass-panel p-6 rounded-xl glass-panel-hover flex flex-col justify-center">
+<span class="material-symbols-outlined text-tertiary mb-2 text-2xl">stethoscope</span>
+<h4 class="font-code-label text-sm text-on-surface uppercase mb-1">Clinical Medicine (MD / MBBS)</h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-2 line-clamp-2">Internal Medicine, Triage, Diagnostics, 7,624 academic hours.</p>
+<div class="h-1 w-full bg-surface-container-highest mt-2">
+<div class="h-full bg-tertiary w-[88%]"></div>
+</div>
+</div>
+<!-- Web Systems -->
+<div class="md:col-span-2 md:row-span-1 glass-panel p-6 rounded-xl glass-panel-hover flex items-center justify-between">
+<div>
+<h4 class="font-code-label text-sm text-on-surface uppercase mb-1">Engineering &amp; Web Systems</h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant">WordPress Architecture, core customization, SEO &amp; programmatic media monetization.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl opacity-50">data_object</span>
+</div>
+</div>
+</section>
+<!-- Strategic Projects -->
+<section class="relative" id="projects">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-px bg-outline-variant flex-grow"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-widest">Strategic Projects</h2>
+<div class="h-px bg-outline-variant flex-grow"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-panel p-6 rounded-xl glass-panel-hover group flex flex-col">
+<div class="h-40 bg-surface-container-highest rounded-lg mb-6 flex items-center justify-center border border-outline-variant/20 overflow-hidden relative">
+<span class="material-symbols-outlined text-primary/40 text-6xl">school</span>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h3 class="font-code-label text-lg text-on-surface mb-2">Interactive CMS Learning App</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow mb-4">Custom educational architecture engineered for modular WordPress mastery, full-stack CMS development, and programmatic learning pathways.</p>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="px-2 py-1 bg-primary/10 border border-primary/20 rounded font-code-label text-[10px] text-primary">WordPress Core • PHP • JS • LMS</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl glass-panel-hover group flex flex-col">
+<div class="h-40 bg-surface-container-highest rounded-lg mb-6 flex items-center justify-center border border-outline-variant/20 overflow-hidden relative">
+<span class="material-symbols-outlined text-primary/40 text-6xl">psychiatry</span>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h3 class="font-code-label text-lg text-on-surface mb-2">ADHD Focus &amp; Cognitive Health App</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow mb-4">Specialized digital health application designed for neurodivergent focus tracking, cognitive task structuring, and personalized behavioral feedback loops.</p>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="px-2 py-1 bg-primary/10 border border-primary/20 rounded font-code-label text-[10px] text-primary">HealthTech • Cognitive UI • Web App</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl glass-panel-hover group flex flex-col">
+<div class="h-40 bg-surface-container-highest rounded-lg mb-6 flex items-center justify-center border border-outline-variant/20 overflow-hidden relative">
+<span class="material-symbols-outlined text-primary/40 text-6xl">smart_toy</span>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h3 class="font-code-label text-lg text-on-surface mb-2">AI Medical Content Automation Agent</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow mb-4">Autonomous multi-agent pipeline using LLMs and clinical validation rules to generate SEO-driven, medically authoritative research publications.</p>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="px-2 py-1 bg-primary/10 border border-primary/20 rounded font-code-label text-[10px] text-primary">Agentic AI • LLM APIs • Clinical NLP</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Clinical Roadmap / Milestones -->
+<section class="relative" id="roadmap">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-px bg-outline-variant w-12"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-widest">Neural Milestones</h2>
+</div>
+<div class="glass-panel p-8 rounded-xl">
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="w-24 text-primary font-code-label text-sm shrink-0">2023 - Present</div>
+<div>
+<h4 class="font-headline-md text-lg text-on-surface mb-1">Generative AI &amp; Agentic AI Systems Developer</h4>
+<p class="font-body-sm text-on-surface-variant">Designed and built autonomous multi-agent systems, tool-calling LLM workflows, and RAG pipelines. Implemented rapid vibe-coding techniques to deploy AI-driven web applications and automated tasks.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-24 text-primary font-code-label text-sm shrink-0">2022 - Present</div>
+<div>
+<h4 class="font-headline-md text-lg text-on-surface mb-1">AI in Healthcare &amp; Clinical Innovation Specialist</h4>
+<p class="font-body-sm text-on-surface-variant">Engineered AI-assisted clinical decision support tools, automated diagnostic triage algorithms, and validated medical prompt engineering workflows for healthcare literature synthesis.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-24 text-primary font-code-label text-sm shrink-0">2016 - 2022</div>
+<div>
+<h4 class="font-headline-md text-lg text-on-surface mb-1">MD Physician / MBBS Specialist Degree &amp; Residency</h4>
+<p class="font-body-sm text-on-surface-variant">Mari State University (MarSU), Russia. Completed 360 Academic Credits and 7,624 Hours of rigorous clinical &amp; theoretical training across Internal Medicine, Emergency Care, Outpatient Triage, and Procedural Ward Nursing.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-24 text-primary font-code-label text-sm shrink-0">2015 - Present</div>
+<div>
+<h4 class="font-headline-md text-lg text-on-surface mb-1">Independent Web Engineering &amp; WordPress Architect</h4>
+<p class="font-body-sm text-on-surface-variant">Deployed high-performance web portals, custom WordPress themes, and monetized digital media engines (Google AdSense) under NDA consulting agreements.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="relative" id="contact">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-px bg-outline-variant flex-grow"></div>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-widest">Connect</h2>
+<div class="h-px bg-outline-variant flex-grow"></div>
+</div>
+<div class="glass-panel p-8 rounded-xl flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="space-y-4">
+<p class="font-code-label text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">mail</span>
+        abhijeet.kashyap20@gmail.com
+    </p>
+<p class="font-code-label text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">call</span>
+        +91 9752581403
+    </p>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all text-on-surface hover:text-primary" href="#"><span class="font-code-label">FB</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all text-on-surface hover:text-primary" href="#"><span class="font-code-label">IG</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all text-on-surface hover:text-primary" href="#"><span class="font-code-label">IN</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center hover:bg-primary/10 hover:border-primary transition-all text-on-surface hover:text-primary" href="#"><span class="font-code-label">TG</span></a>
+</div>
+</div>
+</section>
+</main>
+
+</body></html>
